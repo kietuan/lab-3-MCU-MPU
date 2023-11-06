@@ -12,9 +12,9 @@ int GREEN_light_counter;
 int YELLOW_light_counter;
 int RED_light_counter;
 
-int SEG7_buffer [3];
+int SEG7_buffer [2];
 
-void update7SEG (void);
+void scan_7SEGs(void);
 
 void traffic_light_fsm(void);
 

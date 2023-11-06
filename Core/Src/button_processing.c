@@ -156,9 +156,7 @@ extern void fsm_input_processing(void)
 			HAL_GPIO_WritePin(YELLOW1_GPIO_Port, YELLOW1_Pin, 0);
             HAL_GPIO_WritePin(GREEN1_GPIO_Port, GREEN1_Pin, 0);
 			SEG7_buffer[0] = 2;
-			SEG7_buffer[1] = counter_buffer / 10;
-			SEG7_buffer[2] = counter_buffer % 10;
-			update7SEG();
+			SEG7_buffer[1] = counter_buffer;
 
 			if (timer0_flag == 1)
 			{
@@ -189,9 +187,7 @@ extern void fsm_input_processing(void)
 			HAL_GPIO_WritePin(RED1_GPIO_Port, RED1_Pin, 0);
             HAL_GPIO_WritePin(GREEN1_GPIO_Port, GREEN1_Pin, 0);
 			SEG7_buffer[0] = 3;
-			SEG7_buffer[1] = counter_buffer / 10;
-			SEG7_buffer[2] = counter_buffer % 10;
-			update7SEG();
+			SEG7_buffer[1] = counter_buffer;
 
 			if (timer0_flag == 1)
 			{
@@ -222,9 +218,7 @@ extern void fsm_input_processing(void)
 			HAL_GPIO_WritePin(RED1_GPIO_Port, RED1_Pin, 0);
             HAL_GPIO_WritePin(YELLOW1_GPIO_Port, YELLOW1_Pin, 0);
 			SEG7_buffer[0] = 4;
-			SEG7_buffer[1] = counter_buffer / 10;
-			SEG7_buffer[2] = counter_buffer % 10;
-			update7SEG();
+			SEG7_buffer[1] = counter_buffer;
 
 			if (timer0_flag == 1)
 			{

@@ -1,2 +1,4 @@
-seg7_led.c:22:6:update7SEG	16	static
-seg7_led.c:369:6:traffic_light_fsm	8	static
+seg7_led.c:23:13:display7SEG_0	24	static
+seg7_led.c:140:13:display7SEG_1	24	static
+seg7_led.c:257:13:scan_7SEGs	16	static
+seg7_led.c:286:6:traffic_light_fsm	8	static

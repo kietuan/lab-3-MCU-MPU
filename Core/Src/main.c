@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "button_processing.h"
 #include "timer.h"
+#include "seg7_led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,6 +95,7 @@ int main(void)
     
     setTimer0(1000);
     current_MODE_status = NORMAL_MODE;
+    setTimer1(500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,6 +104,11 @@ int main(void)
 		//cal; continuously
 		fsm_input_processing();
 		
+    if (timer1_flag == 1)
+    {
+      setTimer1(500);
+      scan_7SEGs();
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -208,10 +215,9 @@ static void MX_GPIO_Init(void)
                           |c0_Pin|d0_Pin|e0_Pin|f0_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, b1_Pin|c1_Pin|d2_Pin|e2_Pin
-                          |f2_Pin|g2_Pin|g0_Pin|d1_Pin
-                          |e1_Pin|f1_Pin|g1_Pin|a2_Pin
-                          |b2_Pin|c2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, b1_Pin|c1_Pin|EN3_Pin|g0_Pin
+                          |d1_Pin|e1_Pin|f1_Pin|g1_Pin
+                          |EN0_Pin|EN1_Pin|EN2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : GREEN1_Pin YELLOW1_Pin RED1_Pin a0_Pin
                            RED0_Pin YELLOW0_Pin GREEN0_Pin b0_Pin
@@ -230,14 +236,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(a1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : b1_Pin c1_Pin d2_Pin e2_Pin
-                           f2_Pin g2_Pin g0_Pin d1_Pin
-                           e1_Pin f1_Pin g1_Pin a2_Pin
-                           b2_Pin c2_Pin */
-  GPIO_InitStruct.Pin = b1_Pin|c1_Pin|d2_Pin|e2_Pin
-                          |f2_Pin|g2_Pin|g0_Pin|d1_Pin
-                          |e1_Pin|f1_Pin|g1_Pin|a2_Pin
-                          |b2_Pin|c2_Pin;
+  /*Configure GPIO pins : b1_Pin c1_Pin EN3_Pin g0_Pin
+                           d1_Pin e1_Pin f1_Pin g1_Pin
+                           EN0_Pin EN1_Pin EN2_Pin */
+  GPIO_InitStruct.Pin = b1_Pin|c1_Pin|EN3_Pin|g0_Pin
+                          |d1_Pin|e1_Pin|f1_Pin|g1_Pin
+                          |EN0_Pin|EN1_Pin|EN2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
