@@ -1,0 +1,5 @@
+button_processing.c:31:13:is_BUTTON_MODE_pressed	4	static
+button_processing.c:41:13:is_BUTTON_MODIFY_pressed	4	static
+button_processing.c:51:13:is_BUTTON_SAVE_pressed	4	static
+button_processing.c:61:13:get_BUTTONs	8	static
+button_processing.c:132:13:fsm_input_processing	8	static

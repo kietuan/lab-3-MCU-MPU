@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "global.h": "c",
+        "stdbool.h": "c",
+        "timer.h": "c",
+        "seg7.h": "c",
+        "seg7_led.h": "c",
+        "button_processing.h": "c"
+    }
+}
