@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   0000b131  00000000  00000000  00042b65  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000824f7  00000000  00000000  0004dc96  2**0
+ 18 .debug_str    000824f9  00000000  00000000  0004dc96  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000d018d  2**0
+ 19 .comment      00000053  00000000  00000000  000d018f  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000027b8  00000000  00000000  000d01e0  2**2
+ 20 .debug_frame  000027b8  00000000  00000000  000d01e4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -853,8 +853,8 @@ int main(void)
       setTimer1(500);
  8000604:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
  8000608:	f001 f88a 	bl	8001720 <setTimer1>
-      scan_7SEGs();
- 800060c:	f000 fdf0 	bl	80011f0 <scan_7SEGs>
+      update_7SEGs();
+ 800060c:	f000 fdf0 	bl	80011f0 <update_7SEGs>
 		fsm_input_processing();
  8000610:	e7f2      	b.n	80005f8 <main+0x30>
  8000612:	bf00      	nop
@@ -2481,9 +2481,9 @@ static void display7SEG_1 (int number)
  80011ea:	bd80      	pop	{r7, pc}
  80011ec:	40010c00 	.word	0x40010c00
 
-080011f0 <scan_7SEGs>:
+080011f0 <update_7SEGs>:
 
-extern void scan_7SEGs(void)
+extern void update_7SEGs(void)
 {   
  80011f0:	b580      	push	{r7, lr}
  80011f2:	b082      	sub	sp, #8
@@ -2496,51 +2496,51 @@ extern void scan_7SEGs(void)
     static int flag = 0;
 
     switch(flag)
- 80011fe:	4b43      	ldr	r3, [pc, #268]	; (800130c <scan_7SEGs+0x11c>)
+ 80011fe:	4b43      	ldr	r3, [pc, #268]	; (800130c <update_7SEGs+0x11c>)
  8001200:	681b      	ldr	r3, [r3, #0]
  8001202:	2b00      	cmp	r3, #0
- 8001204:	d002      	beq.n	800120c <scan_7SEGs+0x1c>
+ 8001204:	d002      	beq.n	800120c <update_7SEGs+0x1c>
  8001206:	2b01      	cmp	r3, #1
- 8001208:	d039      	beq.n	800127e <scan_7SEGs+0x8e>
+ 8001208:	d039      	beq.n	800127e <update_7SEGs+0x8e>
             display7SEG_0(SEG7_buffer[0] % 10);
             display7SEG_1(SEG7_buffer[1] % 10);
             flag = 0;
             break;
     }
 }
- 800120a:	e07b      	b.n	8001304 <scan_7SEGs+0x114>
+ 800120a:	e07b      	b.n	8001304 <update_7SEGs+0x114>
             HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, ON);
  800120c:	687b      	ldr	r3, [r7, #4]
  800120e:	b2db      	uxtb	r3, r3
  8001210:	461a      	mov	r2, r3
  8001212:	2180      	movs	r1, #128	; 0x80
- 8001214:	483e      	ldr	r0, [pc, #248]	; (8001310 <scan_7SEGs+0x120>)
+ 8001214:	483e      	ldr	r0, [pc, #248]	; (8001310 <update_7SEGs+0x120>)
  8001216:	f000 fdc0 	bl	8001d9a <HAL_GPIO_WritePin>
             HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, ON);
  800121a:	687b      	ldr	r3, [r7, #4]
  800121c:	b2db      	uxtb	r3, r3
  800121e:	461a      	mov	r2, r3
  8001220:	f44f 7180 	mov.w	r1, #256	; 0x100
- 8001224:	483a      	ldr	r0, [pc, #232]	; (8001310 <scan_7SEGs+0x120>)
+ 8001224:	483a      	ldr	r0, [pc, #232]	; (8001310 <update_7SEGs+0x120>)
  8001226:	f000 fdb8 	bl	8001d9a <HAL_GPIO_WritePin>
             HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, OFF);
  800122a:	683b      	ldr	r3, [r7, #0]
  800122c:	b2db      	uxtb	r3, r3
  800122e:	461a      	mov	r2, r3
  8001230:	f44f 7100 	mov.w	r1, #512	; 0x200
- 8001234:	4836      	ldr	r0, [pc, #216]	; (8001310 <scan_7SEGs+0x120>)
+ 8001234:	4836      	ldr	r0, [pc, #216]	; (8001310 <update_7SEGs+0x120>)
  8001236:	f000 fdb0 	bl	8001d9a <HAL_GPIO_WritePin>
             HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, OFF);
  800123a:	683b      	ldr	r3, [r7, #0]
  800123c:	b2db      	uxtb	r3, r3
  800123e:	461a      	mov	r2, r3
  8001240:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 8001244:	4832      	ldr	r0, [pc, #200]	; (8001310 <scan_7SEGs+0x120>)
+ 8001244:	4832      	ldr	r0, [pc, #200]	; (8001310 <update_7SEGs+0x120>)
  8001246:	f000 fda8 	bl	8001d9a <HAL_GPIO_WritePin>
             display7SEG_0(SEG7_buffer[0] / 10);
- 800124a:	4b32      	ldr	r3, [pc, #200]	; (8001314 <scan_7SEGs+0x124>)
+ 800124a:	4b32      	ldr	r3, [pc, #200]	; (8001314 <update_7SEGs+0x124>)
  800124c:	681b      	ldr	r3, [r3, #0]
- 800124e:	4a32      	ldr	r2, [pc, #200]	; (8001318 <scan_7SEGs+0x128>)
+ 800124e:	4a32      	ldr	r2, [pc, #200]	; (8001318 <update_7SEGs+0x128>)
  8001250:	fb82 1203 	smull	r1, r2, r2, r3
  8001254:	1092      	asrs	r2, r2, #2
  8001256:	17db      	asrs	r3, r3, #31
@@ -2548,9 +2548,9 @@ extern void scan_7SEGs(void)
  800125a:	4618      	mov	r0, r3
  800125c:	f7ff fade 	bl	800081c <display7SEG_0>
             display7SEG_1(SEG7_buffer[1] / 10);
- 8001260:	4b2c      	ldr	r3, [pc, #176]	; (8001314 <scan_7SEGs+0x124>)
+ 8001260:	4b2c      	ldr	r3, [pc, #176]	; (8001314 <update_7SEGs+0x124>)
  8001262:	685b      	ldr	r3, [r3, #4]
- 8001264:	4a2c      	ldr	r2, [pc, #176]	; (8001318 <scan_7SEGs+0x128>)
+ 8001264:	4a2c      	ldr	r2, [pc, #176]	; (8001318 <update_7SEGs+0x128>)
  8001266:	fb82 1203 	smull	r1, r2, r2, r3
  800126a:	1092      	asrs	r2, r2, #2
  800126c:	17db      	asrs	r3, r3, #31
@@ -2558,43 +2558,43 @@ extern void scan_7SEGs(void)
  8001270:	4618      	mov	r0, r3
  8001272:	f7ff fd6b 	bl	8000d4c <display7SEG_1>
             flag = 1;
- 8001276:	4b25      	ldr	r3, [pc, #148]	; (800130c <scan_7SEGs+0x11c>)
+ 8001276:	4b25      	ldr	r3, [pc, #148]	; (800130c <update_7SEGs+0x11c>)
  8001278:	2201      	movs	r2, #1
  800127a:	601a      	str	r2, [r3, #0]
             break;
- 800127c:	e042      	b.n	8001304 <scan_7SEGs+0x114>
+ 800127c:	e042      	b.n	8001304 <update_7SEGs+0x114>
             HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, OFF);
  800127e:	683b      	ldr	r3, [r7, #0]
  8001280:	b2db      	uxtb	r3, r3
  8001282:	461a      	mov	r2, r3
  8001284:	2180      	movs	r1, #128	; 0x80
- 8001286:	4822      	ldr	r0, [pc, #136]	; (8001310 <scan_7SEGs+0x120>)
+ 8001286:	4822      	ldr	r0, [pc, #136]	; (8001310 <update_7SEGs+0x120>)
  8001288:	f000 fd87 	bl	8001d9a <HAL_GPIO_WritePin>
             HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, OFF);
  800128c:	683b      	ldr	r3, [r7, #0]
  800128e:	b2db      	uxtb	r3, r3
  8001290:	461a      	mov	r2, r3
  8001292:	f44f 7180 	mov.w	r1, #256	; 0x100
- 8001296:	481e      	ldr	r0, [pc, #120]	; (8001310 <scan_7SEGs+0x120>)
+ 8001296:	481e      	ldr	r0, [pc, #120]	; (8001310 <update_7SEGs+0x120>)
  8001298:	f000 fd7f 	bl	8001d9a <HAL_GPIO_WritePin>
             HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, ON);
  800129c:	687b      	ldr	r3, [r7, #4]
  800129e:	b2db      	uxtb	r3, r3
  80012a0:	461a      	mov	r2, r3
  80012a2:	f44f 7100 	mov.w	r1, #512	; 0x200
- 80012a6:	481a      	ldr	r0, [pc, #104]	; (8001310 <scan_7SEGs+0x120>)
+ 80012a6:	481a      	ldr	r0, [pc, #104]	; (8001310 <update_7SEGs+0x120>)
  80012a8:	f000 fd77 	bl	8001d9a <HAL_GPIO_WritePin>
             HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, ON);
  80012ac:	687b      	ldr	r3, [r7, #4]
  80012ae:	b2db      	uxtb	r3, r3
  80012b0:	461a      	mov	r2, r3
  80012b2:	f44f 6180 	mov.w	r1, #1024	; 0x400
- 80012b6:	4816      	ldr	r0, [pc, #88]	; (8001310 <scan_7SEGs+0x120>)
+ 80012b6:	4816      	ldr	r0, [pc, #88]	; (8001310 <update_7SEGs+0x120>)
  80012b8:	f000 fd6f 	bl	8001d9a <HAL_GPIO_WritePin>
             display7SEG_0(SEG7_buffer[0] % 10);
- 80012bc:	4b15      	ldr	r3, [pc, #84]	; (8001314 <scan_7SEGs+0x124>)
+ 80012bc:	4b15      	ldr	r3, [pc, #84]	; (8001314 <update_7SEGs+0x124>)
  80012be:	681a      	ldr	r2, [r3, #0]
- 80012c0:	4b15      	ldr	r3, [pc, #84]	; (8001318 <scan_7SEGs+0x128>)
+ 80012c0:	4b15      	ldr	r3, [pc, #84]	; (8001318 <update_7SEGs+0x128>)
  80012c2:	fb83 1302 	smull	r1, r3, r3, r2
  80012c6:	1099      	asrs	r1, r3, #2
  80012c8:	17d3      	asrs	r3, r2, #31
@@ -2607,9 +2607,9 @@ extern void scan_7SEGs(void)
  80012d6:	4608      	mov	r0, r1
  80012d8:	f7ff faa0 	bl	800081c <display7SEG_0>
             display7SEG_1(SEG7_buffer[1] % 10);
- 80012dc:	4b0d      	ldr	r3, [pc, #52]	; (8001314 <scan_7SEGs+0x124>)
+ 80012dc:	4b0d      	ldr	r3, [pc, #52]	; (8001314 <update_7SEGs+0x124>)
  80012de:	685a      	ldr	r2, [r3, #4]
- 80012e0:	4b0d      	ldr	r3, [pc, #52]	; (8001318 <scan_7SEGs+0x128>)
+ 80012e0:	4b0d      	ldr	r3, [pc, #52]	; (8001318 <update_7SEGs+0x128>)
  80012e2:	fb83 1302 	smull	r1, r3, r3, r2
  80012e6:	1099      	asrs	r1, r3, #2
  80012e8:	17d3      	asrs	r3, r2, #31
@@ -2622,7 +2622,7 @@ extern void scan_7SEGs(void)
  80012f6:	4608      	mov	r0, r1
  80012f8:	f7ff fd28 	bl	8000d4c <display7SEG_1>
             flag = 0;
- 80012fc:	4b03      	ldr	r3, [pc, #12]	; (800130c <scan_7SEGs+0x11c>)
+ 80012fc:	4b03      	ldr	r3, [pc, #12]	; (800130c <update_7SEGs+0x11c>)
  80012fe:	2200      	movs	r2, #0
  8001300:	601a      	str	r2, [r3, #0]
             break;

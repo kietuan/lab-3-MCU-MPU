@@ -254,7 +254,7 @@ static void display7SEG_1 (int number)
     }
 }
 
-extern void scan_7SEGs(void)
+extern void update_7SEGs(void)
 {   
     const int ON = 1, OFF = 0;
     static int flag = 0;

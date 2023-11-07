@@ -14,7 +14,7 @@ int RED_light_counter;
 
 int SEG7_buffer [2];
 
-void scan_7SEGs(void);
+void update_7SEGs(void);
 
 void traffic_light_fsm(void);
 

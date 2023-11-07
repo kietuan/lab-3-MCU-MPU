@@ -107,7 +107,7 @@ int main(void)
     if (timer1_flag == 1)
     {
       setTimer1(500);
-      scan_7SEGs();
+      update_7SEGs();
     }
     /* USER CODE END WHILE */
 
