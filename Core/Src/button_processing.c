@@ -206,7 +206,7 @@ extern void fsm_input_processing(void)
 			{
 				current_MODE_status = MODIFY_GREEN_MODE;
 				setTimer0(250);
-				counter_buffer = YELLOW_light_counter;
+				counter_buffer = GREEN_light_counter;
 				HAL_GPIO_WritePin(GREEN0_GPIO_Port, GREEN0_Pin, 1);
 				HAL_GPIO_WritePin(GREEN1_GPIO_Port, GREEN1_Pin, 1);
 			}

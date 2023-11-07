@@ -643,8 +643,8 @@ extern void fsm_input_processing(void)
 				setTimer0(250);
  80004cc:	20fa      	movs	r0, #250	; 0xfa
  80004ce:	f001 f911 	bl	80016f4 <setTimer0>
-				counter_buffer = YELLOW_light_counter;
- 80004d2:	4b3b      	ldr	r3, [pc, #236]	; (80005c0 <fsm_input_processing+0x2b8>)
+				counter_buffer = GREEN_light_counter;
+ 80004d2:	4b3c      	ldr	r3, [pc, #240]	; (80005c4 <fsm_input_processing+0x2bc>)
  80004d4:	681b      	ldr	r3, [r3, #0]
  80004d6:	4a37      	ldr	r2, [pc, #220]	; (80005b4 <fsm_input_processing+0x2ac>)
  80004d8:	6013      	str	r3, [r2, #0]
